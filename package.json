@@ -1,0 +1,62 @@
+{
+  "name": "n8n-coco",
+  "version": "0.1.0",
+  "description": "n8n community node for Cashu wallets using coco-cashu-core",
+  "keywords": [
+    "n8n-community-node-package",
+    "cashu",
+    "ecash",
+    "bitcoin",
+    "coco"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/asmogo/n8n-coco",
+  "author": {
+    "name": "",
+    "email": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/asmogo/n8n-coco.git"
+  },
+  "engines": {
+    "node": ">=20.15"
+  },
+  "main": "index.js",
+  "scripts": {
+    "build": "npx rimraf dist && tsc && gulp build:icons",
+    "dev": "tsc --watch",
+    "format": "prettier nodes credentials --write",
+    "lint": "eslint nodes credentials package.json",
+    "lintfix": "eslint nodes credentials package.json --fix",
+    "prepublishOnly": "npm run build"
+  },
+  "files": [
+    "dist"
+  ],
+  "n8n": {
+    "n8nNodesApiVersion": 1,
+    "credentials": [
+      "dist/credentials/CashuCoco.credentials.js",
+      "dist/credentials/Nostr.credentials.js"
+    ],
+    "nodes": [
+      "dist/nodes/CashuCoco/CashuCoco.node.js",
+      "dist/nodes/Nostr/NostrRelayStream.node.js"
+    ]
+  },
+  "devDependencies": {
+    "@types/node": "^22.7.5",
+    "gulp": "^5.0.1",
+    "typescript": "^5.9.2"
+  },
+  "dependencies": {
+    "bip39": "^3.1.0",
+    "coco-cashu-core": "^1.0.0-rc9",
+    "coco-cashu-sqlite3": "^0.4.0",
+    "sqlite3": "^5.1.7"
+  },
+  "peerDependencies": {
+    "n8n-workflow": "*"
+  }
+}
